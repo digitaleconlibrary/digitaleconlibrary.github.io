@@ -2,6 +2,19 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 500;
     font-size: 14px;
+    background-color: white;}
+
+h1 {
+    font-size: 4em;
+    text-align: center;
+}
+
+h2, h3 {
+    text-align: center;
+}
+
+#home {
+    text-align: center;
 }
 
 button {
@@ -11,25 +24,39 @@ button {
     font-size: 14px;
     border: none;
     cursor: pointer;
-    width: 33%;
+    width: 100%;
+}
+
+#Keynesian {
+    display: none;
+    border: solid red 4px;
+    margin: 4px 0px;
+    padding: 4px;
 }
 
 #Neoclassical {
     display: none;
+    border: solid green 4px;
+    margin: 4px 0px;
+    padding: 4px;
 }
 
 #SupplySide {
     display: none;
+    border: solid blue 4px;
+    margin: 4px 0px;
+    padding: 4px;
 }
 
 .visgraph .vis-time-axis {
     display: none;
 }
-.visgraph3 .vis-time-axis {
-    display: block;
+.visgraph3 .vis-minor {
+    display: none;
 }
-.visgraph3 .vis-y-axis {
-    display: block;
+
+.visgraph3 .vis-major {
+    display: none;
 }
 
 
@@ -68,15 +95,18 @@ button {
 }
 
 .visgraph {
-    width: 90%
+    width: 90%;
+    margin: 0 auto;
 }
 
 .visgraph2 {
     width: 90%;
+    margin: 0 auto;
 }
 
 .visgraph3 {
     width: 50%;
+    margin: 0 auto;
 }
 
 
@@ -95,11 +125,28 @@ button {
     margin: 0 auto;
 }
 
+#supplyAxis {
+    display: none;
+}
+#standardAxis {
+    display: none;
+    text-align: center;
+}
+
 #LafferAxis {
     margin: 0 auto;
     display: none;
 }
 
+#liquidityLabel {
+    display: none;
+}
+
 table, td {
     border: 0.5px solid lightgrey;
+}
+
+a {
+    text-decoration: none;
+    color: black;
 }

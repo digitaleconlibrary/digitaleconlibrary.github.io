@@ -4,17 +4,20 @@
         <!--imports-->
         <script src="vis.js"></script>
         <script src="index.js"></script>
+        <script src="jquery-3.4.1.js"></script>
         <link href="vis.css" rel="stylesheet" type="text/css" />
         <link href="index.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-        <h1>Digital Economics Library</h1>
+        <a href="index.html"><h1>Digital Economics Library</h1></a>
 
-        <!--buttons-->
+        <div id="home">
+            <h2>Welcome to the Digital Economics Library.</h2>
+            <p>A collection of economic schools of thought and their key principles. Click on a school of thought to start.</p>
+            
+        </div>
+
         <button onclick="openKeynesian()">Keynesian Economics</button>
-        <button onclick="openNeoclassical()">Neoclassical Economics</button>
-        <button onclick="openSupplySide()">Supply-Side Economics</button>
-
         <div id="Keynesian">
             <h2>Keynesian Economics</h2>
             <p>Keynesian economics states that economic output is strongly influenced by the total amount of demand in an economy. As such, Keynesian economists generally recommend that during recessions, the government should decrease taxes and increase spending in order to generate greater total demand.</p>
@@ -39,9 +42,30 @@
             </div>
 
 
-            <h3>Liquidity Trap OR Sticky Wages OR relationship between wages and employment</h3>
+            <h3>Liquidity Trap</h3>
+            <p>The Liquidity Trap is a situation in which using only interest rates to assist the economy becomes futile.</p>
+            <p>In the graph below, the blue line is the Investment-Savings (IS) curve. This line represents the points at which investment in the economy is equivalent to the output of the economy. When interest rates are low, people will borrow more money and there will be more money in the economy. This means more money will be invested into the economy, and the GDP wil be greater. That's why on this curve, when interest rates are low, GDP is shown to be high, and when interest rates are high, GDP is shown to be low.</p>
+            <p>When the government increases its spending, it invests money into the economy, pushing the IS curve to the right (as investment in the economy increases without interest rates increasing).</p>
+            <p>The orange line is the Liquidity Preference-Money Supply (LM) curve. The line represents the points where money demand is equivalent to money supply. When the there are more goods and services being produced, there will be a higher GDP. Additionally, people will have a greater demand for money in order to purchase these goods and services, and will be willing to pay greater interest to borrow this money, increasing interest rates. This is why on this curve, when GDP is low, interest rates are also low, and when GDP is high, interest rates are also high.</p>
+            <p>Typically, when the government increases the money supply, they decrease the demand for money at any given GDP, shifting the LM curve to the right.</p>
+            <p>Keynes proposed that if interest rates go low enough, people will always stick with cash rather than loaning out money that yields such a low amount of interest. We can see this exemplified in the graph below.</p>
+
+            <p>This slider will allow you to increase the money supply by sliding it to the right, simulating monetary policy. As you can see, the level of output and interest rates barely changes when the interest rates are already very low.</p>
+            <div class="slidecontainer">
+                <input type="range" min="0" max="40" value="20" class="slider" step="1" id="myRange6">
+            </div>
+            <p>This slider will allow you to increase public spending by sliding it to the right. As you can see, increasing government spending increases output without having to increase interest rates.</p>
+            <div class="slidecontainer">
+                <input type="range" min="0" max="40" value="20" class="slider" step="1" id="myRange7">
+            </div>
+            <div id="demo6" class="visgraph3"></div>
+            <div id="liquidityLabel" style="text-align: center">
+                <p>Output (Real GDP)</p>
+            </div>
         </div>
+        <br>
  
+        <button onclick="openNeoclassical()">Neoclassical Economics</button>
         <div id="Neoclassical">
             <h2>Classical Economics</h2>
             <p>Classical economics is an economic school of thought based off of Enlightenment-era philosophes such as Adam Smith or David Ricardo. Classical economics views the economy as a self-regulating system governed by the "Invisible Hand," or a set of scientific/mathematical laws that affect supply, demand, price, and more. Classical economists typically advocate for a free market.</p>
@@ -68,7 +92,7 @@
                 <input type="range" min="0" max="24" value="12" class="slider" step="1" id="countryA">
             </div>
             <div id="demoA" class="visgraph2"></div>
-            <div id="labelA" style="text-align: center; width: 80%">
+            <div id="labelA" style="text-align: center">
                 <p>Pencils</p>
             </div>
 
@@ -77,11 +101,13 @@
                 <input type="range" min="0" max="24" value="12" class="slider" step="2" id="countryB">
             </div>
             <div id="demoB" class="visgraph2"></div>
-            <div id="labelB" style="text-align: center; width: 80%">
+            <div id="labelB" style="text-align: center">
                 <p>Pencils</p>
             </div>
         </div>
+        <br>
 
+        <button onclick="openSupplySide()">Supply-Side Economics</button>
         <div id="SupplySide">
             <h2>Supply-Side Economics</h2>
             <p>Supply-side economics views the economy as primarily driven by supply rather than demand. They advocate for a reduction of taxes and typically a free market approach.</p>
@@ -95,12 +121,11 @@
                 <input type="range" min="0" max="100" value="50" class="slider" step="5" id="myRange3">
             </div>
             <div id="demo3" class="visgraph2"></div>
-            <div id="LafferAxis" style="text-align: center; width: 80%">
+            <div id="LafferAxis" style="text-align: center">
                 <p>Sales Tax Rate (percentage)</p>
             </div>
 
             <h3>Vertical Supply Curve</h3>
-            <h1> THIS IS WRONG </h1>
             <p>Supply-side economists believe that the supply curve is nearly vertical.</p>
 
             <p>Move the slider below to see what happens to price as output changes with traditional supply curves</p>
@@ -108,7 +133,7 @@
                 <input type="range" min="0" max="100" value="50" class="slider" step="1" id="myRange4">
             </div>
             <div id="demo4" class="visgraph3"></div>
-            <div id="StandardAxis" style="text-align: center; width: 50%">
+            <div id="standardAxis" style="text-align: center">
                 <p>Output</p>
             </div>
 
@@ -118,11 +143,14 @@
                 <input type="range" min="0" max="100" value="50" class="slider" step="1" id="myRange5">
             </div>
             <div id="demo5" class="visgraph3"></div>
-            </div>
-            <div id="SupplyAxis" style="text-align: center; width: 50%">
+            <div id="supplyAxis" style="text-align: center">
                 <p>Output</p>
             </div>
 
+            </div>
+        </div>
+
+        <div id="home1">
         </div>
 
         <script src="index.js"></script>

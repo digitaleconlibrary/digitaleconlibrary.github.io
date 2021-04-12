@@ -5,6 +5,8 @@ var slider4 = document.getElementById("countryA");
 var slider5 = document.getElementById("countryB");
 var slider6 = document.getElementById("myRange4");
 var slider7 = document.getElementById("myRange5");
+var slider8 = document.getElementById("myRange6");
+var slider8b = document.getElementById("myRange7");
 var output = document.getElementById("demo");   // container of graph
 var output2 = document.getElementById("demo2");
 var output3 = document.getElementById("demo3");
@@ -12,28 +14,68 @@ var output4 = document.getElementById("demoA");
 var output5 = document.getElementById("demoB");
 var output6 = document.getElementById("demo4");
 var output7 = document.getElementById("demo5");
+var output8 = document.getElementById("demo6");
 
 var keynesianTab = document.getElementById("Keynesian").style;
 var neoclassicalTab = document.getElementById("Neoclassical").style;
 var supplySideTab = document.getElementById("SupplySide").style;
+var homeTab = document.getElementById("home").style;
+var homeTab1 = document.getElementById("home1").style;
+
+// make graphs show up at beginning
+$(document).ready(function(){
+    $("#myRange").trigger("input");
+    $("#myRange2").trigger("input");
+    $("#myRange3").trigger("input");
+    $("#countryA").trigger("input");
+    $("#countryB").trigger("input");
+    $("#myRange4").trigger("input");
+    $("#myRange5").trigger("input");
+    $("#myRange6").trigger("input");
+});
+
 
 // for tabs
 function openKeynesian() {
-    keynesianTab.display = "block";
-    neoclassicalTab.display = "none";
-    supplySideTab.display = "none";
+    if (keynesianTab.display == "block") {
+        keynesianTab.display = "none";
+        homeTab.display = "block";
+        homeTab1.display = "block";
+    } else{
+        keynesianTab.display = "block";
+        neoclassicalTab.display = "none";
+        supplySideTab.display = "none";
+        homeTab.display = "none";
+        homeTab1.display = "none";
+    }
 }
 
 function openNeoclassical() {
-    keynesianTab.display = "none";
-    neoclassicalTab.display = "block";
-    supplySideTab.display = "none";
+    if (neoclassicalTab.display == "block") {
+        neoclassicalTab.display = "none";
+        homeTab.display = "block";
+        homeTab1.display = "block";
+    } else {
+        keynesianTab.display = "none";
+        neoclassicalTab.display = "block";
+        supplySideTab.display = "none";
+        homeTab.display = "none";
+        homeTab1.display = "none";
+    }
 }
 
 function openSupplySide() {
-    keynesianTab.display = "none";
-    neoclassicalTab.display = "none";
-    supplySideTab.display = "block";
+    if (supplySideTab.display == "block") {
+        supplySideTab.display = "none";
+        homeTab.display = "block";
+        homeTab1.display = "block";
+    } else {
+        keynesianTab.display = "none";
+        neoclassicalTab.display = "none";
+        supplySideTab.display = "block";
+        homeTab.display = "none";
+        homeTab1.display = "none";
+    }
 }
 
 // Update the current slider value (each time you drag the slider handle)
@@ -296,7 +338,7 @@ slider6.oninput = function() {
     }
 
     var Graph2d = new vis.Graph2d(output6, dataset, options);
-    document.getElementById("StandardAxis").style.display = "block";
+    document.getElementById("standardAxis").style.display = "block";
 }
 
 slider7.oninput = function() {
@@ -341,5 +383,65 @@ slider7.oninput = function() {
     }
 
     var Graph2d = new vis.Graph2d(output7, dataset, options);
-    document.getElementById("SupplyAxis").style.display = "block";
+    document.getElementById("supplyAxis").style.display = "block";
+}
+
+// store current values of IS and LM curve
+var y = 0;
+var x = 0;
+
+slider8.oninput = function() {
+    output8.innerHTML = ""
+
+    x = this.value - 20;
+    console.log("X: " + x);
+    console.log("y: " + y)
+
+    var items = [
+        {x: -40 + y, y: 80, group: ": IS"},
+        {x: 0 + y, y: 40, group: ": IS"},
+        {x: 40 + y, y: 0, group: ": IS"},
+        {x: -40, y: 10, group: ": LM"},
+        {x: 0, y: 10, group: ": LM"},
+        {x: 60 + x, y: 10, group: ": LM"},
+        {x: 66 + x, y: 11.2, group: ": LM"},
+        {x: 72 + x, y: 14.8, group: ": LM"},
+        {x: 84 + x, y: 29.2, group: ": LM"},
+        {x: 90 + x, y: 40, group: ": LM"},
+        {x: 120 + x, y: 130, group: ": LM"}
+    ]
+
+    var dataset = new vis.DataSet(items);
+
+    var options = {
+        start: -10,
+        end: 100,
+        dataAxis: {
+            left: {
+                title: {
+                    text: "Interest Rates"
+                },
+                range: {
+                    min: 0,
+                    max: 120
+                }
+            }
+        },
+        legend: {
+            enabled: true,
+        }
+    }
+
+    var Graph2d = new vis.Graph2d(output8, dataset, options);
+    document.getElementById("liquidityLabel").style.display = "block";
+}
+
+slider8b.oninput = function() {
+    // set y = to this.value
+    y = this.value - 20;
+    console.log("this value: " + this.value)
+    console.log("y: " + y)
+
+    // proc the slider8
+    $("#myRange6").trigger("input");
 }
